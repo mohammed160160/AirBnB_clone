@@ -5,10 +5,36 @@ import unittest
 from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
+    
     """
-    """
+    BaseModel Unittest
+    """ 
+
+    def setUp(self):
+        """
+        Setup for temporary file path
+        """
+        try:
+            os.rename("file.json", "tmp.json")
+        except FileNotFoundError:
+            pass
+
+    def tearDown(self):
+        """
+        Tear down for temporary file path
+        """
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+        try:
+            os.rename("tmp.json", "file.json")
+        except FileNotFoundError:
+            pass
+
     def test_init(self):
         """
+	Test for Instance
         """
         my_model = BaseModel()
 
@@ -18,6 +44,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """
+	Test time after save
         """
         my_model = BaseModel()
 
@@ -29,6 +56,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """
+	Check .t0_dict return type and values
         """
         my_model = BaseModel()
 
@@ -42,6 +70,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model_dict['updated_at'], my_model.updated_at.isoformat())
 
     def test_str(self):
+	"""\
+	Check string return
+	"""
         my_model = BaseModel()
         
         self.assertIsInstance(my_model.id, str)
