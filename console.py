@@ -12,13 +12,13 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """
     """
     prompt = "(hbnb)"
-    valid_obj = ["BaseModel", "User", "State", "City", "Amenity", 
-             "Place", "Review"]
-
+    valid_obj = ["BaseModel", "User", "State", "City", "Amenity",
+                 "Place", "Review"]
 
     def do_quit(self, arg):
         """
@@ -65,7 +65,6 @@ class HBNBCommand(cmd.Cmd):
             print(" **instance id missing** ")
         else:
             object = storage.all()
-            
             key = "{}.{}".format(commands[0], commands[1])
             if key in objects:
                 print(objects[key])
@@ -115,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             objects = storage.all()
-            key  = "{}.{}".format(commands[0], commands[1])
+            key = "{}.{}".format(commands[0], commands[1])
             if key not in objects:
                 print("**  no instance found **")
             elif len(commands) < 3:
@@ -135,5 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 setattr(obj, attr_name, attr_value)
 
                 obj.save()
+
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

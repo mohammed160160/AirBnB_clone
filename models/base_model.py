@@ -5,6 +5,7 @@ from datetime import datetime
 import uuid
 import models
 
+
 class BaseModel:
     """
     """
@@ -12,11 +13,10 @@ class BaseModel:
         """
         """
         date_time = "%Y-%m-%dT%H:%M:%S.%f"
-        
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
-        
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -33,7 +33,7 @@ class BaseModel:
         """
         self.updated_at = datetime.utcnow()
 
-        models.storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
         """
@@ -47,5 +47,5 @@ class BaseModel:
     def __str__(self):
         """
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
-
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
