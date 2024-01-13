@@ -5,12 +5,13 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """
     """
     prompt = "(hbnb)"
-    valid_obj = ["BaseModel"]
+    valid_obj = ["BaseModel", "User"]
 
 
     def do_quit(self, arg):
@@ -37,25 +38,25 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         commands = shlex.split(arg)
-        if len(commands) == 0
-            print(** class name missing **)
+        if len(commands) == 0:
+            print("** class name missing **")
         elif commands[0] not in self.valid_obj:
-            print("**class doesn't exist**")
+            print("** class doesn't exist **")
         else:
-            new_instance = BaseModel()
-            new_instance.save()
+            new_instance = eval(f"{commands[0]}()")
+            storage.save()
             print(new_instance.id)
 
     def do_show(self, arg):
         """
         """
         commands = shlex.split(arg)
-        if len(commands) == 0
-            print(** class name missing **)
+        if len(commands) == 0:
+            print("** class name missing **")
         elif commands[0] not in self.valid_obj:
-            print("**class doesnt exist**")
+            print("** class doesnt exist **")
         elif len(commands) < 2:
-            print("***instance id missing*")
+            print(" **instance id missing** ")
         else:
             object = storage.all()
             
@@ -63,18 +64,18 @@ class HBNBCommand(cmd.Cmd):
             if key in objects:
                 print(objects[key])
             else:
-                print("**no instance is found**")
+                print("** no instance is found **")
 
     def do_destroy(self, arg):
         """
         """
         commands = shlex.split(arg)
         if len(commands) == 0:
-            print("**class name missing**")
+            print("** class name missing **")
         elif commands[0] not in self.valid_obj:
-            print("**class doesn't exist**")
+            print("** class doesn't exist **")
         elif len(commands) < 2:
-            print("**instance id missing**")
+            print("** instance id missing **")
         else:
             objects = storage.all()
             key = "{}.{}".format(commands[0], commands[1])
@@ -82,9 +83,9 @@ class HBNBCommand(cmd.Cmd):
                 del objects[key]
                 storage.save()
             else:
-                print("**no instance found**")
+                print("** no instance found **")
 
-    def do_all(self, arg)
+    def do_all(self, arg):
         objects = storage.all()
         commands = shlex.split(arg)
 
@@ -92,18 +93,18 @@ class HBNBCommand(cmd.Cmd):
             for key, value in objects.items():
                 print(str(value))
         elif commands[0] not in self.valid_obj:
-            print("**class doesn't exist**")
+            print("** class doesn't exist **")
         else:
             for key, value in onjects.items():
                 if key.split('.')[0] == commands[0]:
                     print(str(value))
 
-    def do_update(self, arg)
+    def do_update(self, arg):
         commands = shlex.split(arg)
         if len(commands) == 0:
-            print("**class name missing**")
+            print("** class name missing **")
         elif commands[0] not in self.valid_obj:
-            print("**class doesnt exist**")
+            print("** class doesnt exist **")
         elif len(commands) < 2:
             print("** instance id missing **")
         else:
@@ -112,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
             if key not in objects:
                 print("**  no instance found **")
             elif len(commands) < 3:
-                print("**attribute name missing**")
+                print("** attribute name missing **")
             elif len(commands) < 4:
                 print("**value missing**")
             else:
@@ -127,6 +128,6 @@ class HBNBCommand(cmd.Cmd):
                     pass
                 setattr(obj, attr_name, attr_value)
 
-                obj.save():
+                obj.save()
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

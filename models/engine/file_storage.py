@@ -2,6 +2,7 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 class FileStorage:
     """
     """
@@ -19,7 +20,7 @@ class FileStorage:
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
-    def save(self, obj):
+    def save(self):
         """
         """
         obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
