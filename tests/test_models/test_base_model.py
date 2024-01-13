@@ -4,11 +4,12 @@
 import unittest
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
-    
+
     """
     BaseModel Unittest
-    """ 
+    """
 
     def setUp(self):
         """
@@ -34,7 +35,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_init(self):
         """
-	Test for Instance
+        Test for Instance
         """
         my_model = BaseModel()
 
@@ -44,7 +45,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """
-	Test time after save
+        Test time after save
         """
         my_model = BaseModel()
 
@@ -56,7 +57,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """
-	Check .t0_dict return type and values
+        Check .t0_dict return type and values
         """
         my_model = BaseModel()
 
@@ -66,19 +67,22 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertEqual(my_model_dict['__class__'], 'BaseModel')
         self.assertEqual(my_model_dict['id'], my_model.id)
-        self.assertEqual(my_model_dict['created_at'], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict['updated_at'], my_model.updated_at.isoformat())
+        self.assertEqual(my_model_dict['created_at'],
+                         my_model.created_at.isoformat())
+        self.assertEqual(my_model_dict['updated_at'],
+                         my_model.updated_at.isoformat())
 
     def test_str(self):
-	"""\
-	Check string return
-	"""
+        """
+        Check string return
+        """
         my_model = BaseModel()
-        
+
         self.assertIsInstance(my_model.id, str)
         self.assertTrue(str(my_model).startswith('[BaseModel]'))
         self.assertIn(my_model.id, str(my_model))
         self.assertIn(str(my_model.__dict__), str(my_model))
+
 
 if __name__ == "__main__":
     unittest.main()
