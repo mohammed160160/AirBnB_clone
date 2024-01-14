@@ -122,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         elif commands[0] not in self.valid_obj:
             print("** class doesn't exist **")
         else:
-            for key, value in onjects.items():
+            for key, value in objects.items():
                 if key.split('.')[0] == commands[0]:
                     print(str(value))
 
@@ -150,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = objects[key]
 
-                attr_name = command[2]
+                attr_name = commands[2]
                 attr_value = commands[3]
 
                 try:
