@@ -15,16 +15,15 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-VALID_OBJ = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
-                 "City": City, "Place": Place, "Review": Review,
-                 "State": State}
-
 
 class HBNBCommand(cmd.Cmd):
     """
     HBNB command console class
     """
     prompt = "(hbnb)"
+    valid_obj = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
+                 "City": City, "Place": Place, "Review": Review,
+                 "State": State}
 
     def do_quit(self, arg):
         """
@@ -59,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
-        elif commands[0] not in self.VALID_OBJ:
+        elif commands[0] not in self.valid_obj:
             print("** class doesn't exist **")
         else:
             new_instance = eval(f"{commands[0]}()")
@@ -74,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
-        elif commands[0] not in self.VALID_OBJ:
+        elif commands[0] not in self.valid_obj:
             print("** class doesnt exist **")
         elif len(commands) < 2:
             print(" **instance id missing** ")
@@ -94,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
-        elif commands[0] not in self.VALID_OBJ:
+        elif commands[0] not in self.valid_obj:
             print("** class doesn't exist **")
         elif len(commands) < 2:
             print("** instance id missing **")
@@ -120,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
         if len(commands) == 0:
             for key, value in objects.items():
                 print(str(value))
-        elif commands[0] not in self.VALID_OBJ:
+        elif commands[0] not in self.valid_obj:
             print("** class doesn't exist **")
         else:
             for key, value in onjects.items():
@@ -135,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
-        elif commands[0] not in self.VALID_OBJ:
+        elif commands[0] not in self.valid_obj:
             print("** class doesnt exist **")
         elif len(commands) < 2:
             print("** instance id missing **")
