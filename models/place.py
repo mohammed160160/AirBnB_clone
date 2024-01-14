@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""Place Module
+This Module inherits from BaseModel class.
+Place Module contains the attributes to be assigned
+to the Places created.
+"""
 from models.base_model import BaseModel
 
 
