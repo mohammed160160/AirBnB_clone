@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(commands) < 2:
             print(" **instance id missing** ")
         else:
-            object = storage.all()
+            objects = storage.all()
             key = "{}.{}".format(commands[0], commands[1])
             if key in objects:
                 print(objects[key])
