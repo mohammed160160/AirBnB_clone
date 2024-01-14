@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """
+This module contains the base class
 """
 from datetime import datetime
 import uuid
@@ -8,9 +9,11 @@ import models
 
 class BaseModel:
     """
+    The Base Class
     """
     def __init__(self, *args, **kwargs):
         """
+        Public instantiation for Instance of class
         """
         date_time = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
@@ -30,6 +33,7 @@ class BaseModel:
 
     def save(self):
         """
+        Save to storage and update current time
         """
         self.updated_at = datetime.utcnow()
 
@@ -37,6 +41,7 @@ class BaseModel:
 
     def to_dict(self):
         """
+        Return the dict representation of object
         """
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
@@ -46,6 +51,7 @@ class BaseModel:
 
     def __str__(self):
         """
+        Returns String representation of objects
         """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                      self.__dict__)

@@ -1,5 +1,6 @@
 #!/ucsr/bin/python3
-"""
+""" 
+Console Module
 """
 import cmd
 import shlex
@@ -15,6 +16,7 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """
+    HBNB command console class
     """
     prompt = "(hbnb)"
     valid_obj = ["BaseModel", "User", "State", "City", "Amenity",
@@ -28,21 +30,28 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self, arg):
         """
+        Show quit info/Usage
         """
         print("Quit command to exit the program")
 
     def do_EOF(self, arg):
         """
+        Ctrl+D signal to exit the program
         """
         print()
         return True
 
     def emptyline(self):
         """
+        Do nothing in case of an empty line
         """
         pass
 
     def do_create(self, arg):
+        """
+        Create a new instance of BaseModel and save it to the JSON file.
+        Usage: create <class_name>
+        """
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
@@ -55,6 +64,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
+        Show str reprensentation
+        of an instance
         """
         commands = shlex.split(arg)
         if len(commands) == 0:
@@ -73,6 +84,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """
+        Delete and instance instance using classname/id
+        Usage: destro <class name> <id>
         """
         commands = shlex.split(arg)
         if len(commands) == 0:
@@ -91,6 +104,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
+        """
+        Print String representation of all instances or 
+        a specific class
+        Usage: <User>.all()
+        """
+
         objects = storage.all()
         commands = shlex.split(arg)
 
@@ -105,6 +124,10 @@ class HBNBCommand(cmd.Cmd):
                     print(str(value))
 
     def do_update(self, arg):
+        """
+        Update an instance by adding or updating an attribute.
+        Usage: update <class_name> <id> <attribute_name> "<attribute_value>"
+        """
         commands = shlex.split(arg)
         if len(commands) == 0:
             print("** class name missing **")
