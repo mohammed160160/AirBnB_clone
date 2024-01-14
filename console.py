@@ -1,5 +1,5 @@
 #!/ucsr/bin/python3
-""" 
+"""
 Console Module
 """
 import cmd
@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Print String representation of all instances or 
+        Print String representation of all instances or
         a specific class
         Usage: <User>.all()
         """
