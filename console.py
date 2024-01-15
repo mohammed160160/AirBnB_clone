@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         elif commands[0] not in self.valid_obj:
             print("** class doesnt exist **")
         elif len(commands) < 2:
-            print(" **instance id missing** ")
+            print("** instance id missing **")
         else:
             objects = storage.all()
             key = "{}.{}".format(commands[0], commands[1])
@@ -146,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(commands) < 3:
                 print("** attribute name missing **")
             elif len(commands) < 4:
-                print("**value missing**")
+                print("** value missing **")
             else:
                 obj = objects[key]
 
