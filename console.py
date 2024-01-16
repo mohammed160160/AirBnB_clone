@@ -56,20 +56,21 @@ class HBNBCommand(cmd.Cmd):
         """
         arg_list = line.split('.')
         arg_command = arg_list[0]
-        dot_method = arg_list[1]
-        isee_method = dot_method.split('(')
+        isee_method = arg_list[1].split('(')
         arg_method = isee_method[0]
 
-        method_dict = {
+        if len(isee_method) > 1:
+            arg_id = isee_method[1].split(')')
+            method_dict = {
             'all': self.do_all,
             'show': self.do_show,
             'destroy': self.do_destroy,
             'update': self.do_update,
             'count': self.do_count
-        }
-
-        if arg_method in method_dict.keys():
-            return method_dict[arg_method]("{} {}".format(arg_command, ''))
+            }
+ 
+            if arg_method in method_dict.keys():
+                return method_dict[arg_method]("{} {}".format(arg_command, arg_id[0]))
 
         print("** Unknown syntax: {}".format(line))
         return False
