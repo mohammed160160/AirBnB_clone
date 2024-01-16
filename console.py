@@ -50,6 +50,29 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+    def default(self, line):
+        """
+        Tweak default Operation
+        """
+        arg_list = line.split('.')
+        arg_command = arg_list[0]
+        dot_method = arg_list[1]
+        isee_method = dot_method.split('(')
+        arg_method = isee_method[0]
+
+        method_dict = {
+            'all': self.do_all,
+            'show': self.do_show,
+            'destroy': self.do_destroy,
+            'update': self.do_update,            
+        }
+
+        if arg_method in method_dict.keys():
+            return method_dict[arg_method]("{} {}".format(arg_command, ''))
+
+        print("** Unknown syntax: {}".formart(line))
+        return False
+
     def do_create(self, arg):
         """
         Create a new instance of BaseModel and save it to the JSON file.
