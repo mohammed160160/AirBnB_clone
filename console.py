@@ -64,13 +64,14 @@ class HBNBCommand(cmd.Cmd):
             'all': self.do_all,
             'show': self.do_show,
             'destroy': self.do_destroy,
-            'update': self.do_update,            
+            'update': self.do_update,
+            'count': self.do_count
         }
 
         if arg_method in method_dict.keys():
             return method_dict[arg_method]("{} {}".format(arg_command, ''))
 
-        print("** Unknown syntax: {}".formart(line))
+        print("** Unknown syntax: {}".format(line))
         return False
 
     def do_create(self, arg):
@@ -181,8 +182,30 @@ class HBNBCommand(cmd.Cmd):
                 except Exception:
                     pass
                 setattr(obj, attr_name, attr_value)
-
                 obj.save()
+
+    def do_count(self, arg):
+        """
+        Retrieve the number of instances of a class.
+        """
+        commands = shlex.split(arg)
+
+        if arg:
+            first_arg = commands[0]
+            count = 0
+
+        if commands:
+            if first_arg in self.valid_obj:
+                objects = storage.all()
+
+                for obj in objects.values():
+                    if obj.__class__.__name__ == first_arg:
+                        count += 1
+                print(count)
+            else:
+                print("** invaliid shit **")
+        else:
+            print("** class name missing **")
 
 
 if __name__ == "__main__":
