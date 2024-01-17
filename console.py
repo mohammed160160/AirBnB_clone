@@ -55,23 +55,34 @@ class HBNBCommand(cmd.Cmd):
         Tweak default Operation
         """
         arg_list = line.split('.')
-        arg_command = arg_list[0]
-        isee_method = arg_list[1].split('(')
-        arg_method = isee_method[0]
+        arg_class = arg_list[0]
+        command = arg_list[1].split('(')
+        arg_method = command[0]
 
-        if len(isee_method) > 1:
-            arg_id = isee_method[1].split(')')
+        if len(command) > 1:
+            arg_xtra = command[1].split(')')[0]
+            arg_dict = arg_xtra.split(',')
+            """
+            arg_dict[0] = id
+            arg_dict[1] = attr_name
+            arg_dict[3] = attr_value
+            """
             method_dict = {
-            'all': self.do_all,
-            'show': self.do_show,
-            'destroy': self.do_destroy,
-            'update': self.do_update,
-            'count': self.do_count
+                'all': self.do_all,
+                'show': self.do_show,
+                'destroy': self.do_destroy,
+                'update': self.do_update,
+                'count': self.do_count
             }
- 
-            if arg_method in method_dict.keys():
-                return method_dict[arg_method]("{} {}".format(arg_command, arg_id[0]))
 
+            if arg_method in method_dict.keys():
+                if arg_method != "update":
+                    return method_dict[arg_method]("{} {}".format(arg_class, arg_dict[0]))
+                else:
+                    obj_id = arg_dict[0]
+                    attribute_name = arg_dict[1]
+                    attribute_value = arg_dict[2]
+                    return method_dict[arg_method]("{} {} {} {}".format(arg_class, obj_id, attribute_name, attribute_value))
         print("** Unknown syntax: {}".format(line))
         return False
 
@@ -87,6 +98,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             new_instance = eval(f"{commands[0]}()")
+
             storage.save()
             print(new_instance.id)
 
@@ -125,12 +137,12 @@ class HBNBCommand(cmd.Cmd):
 
         key = "{}.{}".format(class_name, obj_id)
         objects = storage.all()
-            
+
         if key in objects:
             del objects[key]
             storage.save()
         else:
-            print("** no instance found **") 
+            print("** no instance found **")
 
     def do_all(self, arg):
         """
