@@ -7,26 +7,26 @@
 	text-align: right;
 	}
 section.filters button{
+	margin-right: 30px;
+	margin-top: 11px;
+	margin-bottom: 11px;
 	font-size: 18px;
 	color: white;
 	background-color: #FF5A5F;
 	height: 48px;
+	width: 20%;
 	border: 0px;
 	border-radius: 4px;
-	width: 20%;
-	margin-right: 30px;
-	margin-top: 11px;
-	margin-bottom: 11px;
 	opacity: 1;
 	}
 section.filters button:hover{
 	opacity: 0.9;
 	}
 .location{
-	border-right: solid 1px #DDDDDD;
 	text-align: left;
 	height: 100%;
 	width: 25%;
+	border-right: solid 1px #DDDDDD;
 	margin-left: 30px;
 	float: left;
 	}
@@ -48,4 +48,4 @@ h4{
 	margin: 0px;
 	padding: 0px;
 	font-size: 14px;
-	}
+	}	
