@@ -10,7 +10,7 @@
 }
 
 .places_title{
-    margin-bottom: -25px;
+	margin-bottom: -25px;
 }
 
 .articles{
@@ -52,11 +52,8 @@ article h2{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-left: auto;
 	position: absolute;
-	top: 10px;
 	right: 20px;
-	margin-top: -5px;
 }
 
 .price_title{
@@ -68,7 +65,6 @@ article h2{
 	border-top: solid #DDDDDD 1px;
 	border-bottom: solid #DDDDDD 1px;
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
 }
 
@@ -85,8 +81,8 @@ article h2{
 	width: inherit;
 	background: url("../images/max_guest.png");
 	background-repeat: no-repeat;
-	margin-left: 35px;
-}
+	margin-left: 25px;
+	}
 
 .guest_number h2{
 	font-size: 14px;
@@ -107,7 +103,8 @@ article h2{
         width: inherit;
         background: url("../images/number_rooms.png");
         background-repeat: no-repeat;
-        margin-left: 35px;
+        margin-left: 30px;
+	margin-top: 4px;
 }
 
 .room_number h2{
@@ -129,7 +126,7 @@ article h2{
 	width: inherit;
 	background: url("../images/number_bathrooms.png");
 	background-repeat: no-repeat;
-	margin-left: 35px;
+	margin-left: 30px;
 }
 
 .bathroom_number h2{
