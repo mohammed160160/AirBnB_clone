@@ -56,8 +56,8 @@ h4{
 	background-color: #FAFAFA;
 	border: solid #DDDDDD 1px;
 	border-radius: 4px;
-	position: absolute;
-	mergin-top: 7%;
+	position: relative;
+	margin-top: 7%;
 	padding-bottom: 10%;
 	}
 
@@ -80,7 +80,6 @@ li{
 ul{
 	padding-top: 30px;
 }
-
 
 .locations:hover >.popover{
 	visibility: visible;
