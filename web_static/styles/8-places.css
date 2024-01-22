@@ -110,13 +110,13 @@ article h2{
         margin-left: 35px;
 }
 
-.number_rooms h2{
+.room_number h2{
         font-size: 14px;
         color:  #484848;
         font-weight: normal;
 }
 
-.number_rooms{
+.number_bathrooms{
 	width: 100px;
 	display: flex;
 	height: inherit;
@@ -124,15 +124,15 @@ article h2{
 	justify-content: center;
 }
 
-.room_icon{
+.bathroom_icon{
 	height: inherit;
 	width: inherit;
-	background: url("../images/number_rooms.png");
+	background: url("../images/number_bathrooms.png");
 	background-repeat: no-repeat;
 	margin-left: 35px;
 }
 
-.number_rooms h2{
+.bathroom_number h2{
 	font-size: 14px;
 	color:  #484848;
 	font-weight: normal;
